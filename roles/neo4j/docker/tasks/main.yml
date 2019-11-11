@@ -1,0 +1,25 @@
+---
+
+- name: NEO4J DOCKER | Create data directory
+  file:
+    path: "{{ neo4j_home_dir }}"
+    owner: 1030 # neo4j docker user in container
+    group: 1030
+    mode: 0755
+    state: directory
+
+- name: NEO4J DOCKER | Create the network
+  docker_network:
+    name: "{{ neo4j_docker_network.name }}"
+    state: "{{ neo4j_docker_network.state }}"
+
+- name: NEO4J DOCKER | Deploy the container
+  docker_container:
+    name: "{{ neo4j_docker.name }}"
+    image: "{{ neo4j_docker.image }}"
+    state: "{{ neo4j_docker.state }}"
+    restart: yes
+    ports: "{{ neo4j_docker.ports }}"
+    networks:
+      - name: "{{ neo4j_docker.network }}"
+    volumes: "{{ neo4j_docker.volumes }}"

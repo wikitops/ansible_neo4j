@@ -1,0 +1,11 @@
+---
+
+- name: NEO4J REDHAT | Add repository
+  yum_repository:
+    baseurl: "{{ neo4j_repository.url }}"
+    description: "{{ neo4j_repository.description }}"
+    enabled: "{{ neo4j_repository.enabled }}"
+    gpgcheck: "{{ neo4j_repository.gpgcheck }}"
+    name: "{{ neo4j_repository.name }}"
+    state: "{{ neo4j_repository.state }}"
+    reposdir: "{{ neo4j_repository.reposdir }}"

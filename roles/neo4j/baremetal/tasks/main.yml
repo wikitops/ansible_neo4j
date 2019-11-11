@@ -1,0 +1,32 @@
+---
+
+- name: NEO4J | Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: NEO4J | Manage dependencies
+  include_tasks: "{{ ansible_os_family | lower }}.yml"
+
+- name: NEO4J | Install
+  package:
+    name: "{{ neo4j_package_name }}"
+    state: present
+  notify: Restart neo4j
+
+- name: NEO4J | Manage directories
+  file:
+    path: "{{ item }}"
+    owner: neo4j
+    group: neo4j
+    mode:  0755
+  loop:
+    - "{{ neo4j_directories_data }}"
+    - "{{ neo4j_directories_logs }}"
+
+- name: NEO4J | Configuration
+  template:
+    src: etc/neo4j/neo4j.conf.j2
+    dest: /etc/neo4j/neo4j.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart neo4j

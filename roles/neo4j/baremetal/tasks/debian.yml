@@ -1,0 +1,10 @@
+---
+
+- name: NEO4J DEBIAN | Add repository key
+  apt_key:
+    url: "{{ neo4j_apt_key_url }}"
+
+- name: NEO4J DEBIAN | Add repository
+  apt_repository:
+    repo: "{{ neo4j_repository }}"
+    state: present

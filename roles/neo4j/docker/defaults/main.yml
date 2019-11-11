@@ -1,0 +1,35 @@
+---
+
+###
+# NEO4J
+###
+
+# Version
+neo4j_version: latest
+
+# Directory
+neo4j_home_dir: /opt/neo4j
+neo4j_data_dir: '{{ neo4j_home_dir }}/data'
+neo4j_logs_dir: '{{ neo4j_home_dir }}/logs'
+
+###
+# DOCKER
+###
+
+# Network
+neo4j_docker_network:
+  name: neo4j
+  state: present
+
+# Stack
+neo4j_docker:
+  name: neo4j
+  image: neo4j:{{ neo4j_version }}
+  state: started
+  network: neo4j
+  ports:
+    - 7474:7474/tcp
+    - 7687:7687/tcp
+  volumes:
+    - "{{ neo4j_data_dir }}:/data"
+    - "{{ neo4j_logs_dir }}:/logs"

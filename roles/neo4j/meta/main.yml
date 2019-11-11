@@ -1,0 +1,9 @@
+---
+
+dependencies:
+
+  - role: neo4j/baremetal
+    when: neo4j_install_type == "baremetal"
+
+  - role: neo4j/docker
+    when: neo4j_install_type == "docker"

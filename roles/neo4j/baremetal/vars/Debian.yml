@@ -1,0 +1,12 @@
+---
+
+###
+# NEO4J
+###
+
+# Repository
+neo4j_repository: "deb https://debian.neo4j.org/repo stable/"
+neo4j_apt_key_url: https://debian.neo4j.org/neotechnology.gpg.key
+
+# Package
+neo4j_package_name: neo4j=1:{{ neo4j_version }} # community edition

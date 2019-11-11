@@ -1,0 +1,9 @@
+---
+
+- hosts: neo4j
+  remote_user: vagrant
+  become: yes
+  vars:
+    neo4j_install_type: baremetal # baremetal / docker
+  roles:
+    - neo4j

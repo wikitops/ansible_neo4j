@@ -1,0 +1,18 @@
+---
+
+###
+# NEO4J
+###
+
+# Repository
+neo4j_repository:
+  baseurl: https://yum.neo4j.org/stable
+  description: "Neo4j RPM Repository"
+  enabled: yes
+  gpgcheck: yes
+  gpgkey: https://debian.neo4j.org/neotechnology.gpg.key
+  name: neo4j
+  state: present
+
+# Package
+neo4j_package_name: neo4j-{{ neo4j_version }}
