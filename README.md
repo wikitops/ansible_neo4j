@@ -44,7 +44,7 @@ $ vagrant up
 
 If everything run as expected, you should be able to reached the web interface : http://10.0.0.11:7474/
 
-Default logins are : admin / password
+Default logins are : neo4j / neo4j
 
 #### Docker Deployment
 
@@ -64,6 +64,8 @@ $ vagrant up
 ```
 
 If everything run as expected, you should be able to reached the web interface : http://10.0.0.11:7474/
+
+Default logins are : neo4j / neo4j
 
 #### Destroy
 
