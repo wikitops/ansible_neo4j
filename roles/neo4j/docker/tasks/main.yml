@@ -1,12 +1,16 @@
 ---
 
-- name: NEO4J DOCKER | Create data directory
+- name: NEO4J DOCKER | Create data directories
   file:
-    path: "{{ neo4j_home_dir }}"
+    path: "{{ item }}"
     owner: 1030 # neo4j docker user in container
     group: 1030
     mode: 0755
     state: directory
+  loop:
+    - "{{ neo4j_data_dir }}"
+    - "{{ neo4j_logs_dir }}"
+    - "{{ neo4j_plugins_dir }}"
 
 - name: NEO4J DOCKER | Create the network
   docker_network:
